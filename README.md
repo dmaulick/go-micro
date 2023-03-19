@@ -8,5 +8,12 @@ Key Services (See docker-compose.yml for up to date list):
 - listener-service
 - logger-service
 - mail-service
--  
+
+### Random notes:
+
+Generate logs grpc stuff:
+```
+cd logger-service/logs
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative logs.proto
+```
 
