@@ -275,6 +275,8 @@ func (app *Config) logItemViaRPC(w http.ResponseWriter, l LogPayload) {
 	app.writeJSON(w, http.StatusAccepted, payload)
 }
 
+// Not this is called by `mux.Post("/log-grpc", app.LogViaGRPC)` in `routes.go`
+// Don't confuse with way previous mechanisms were called through `mux.Post("/log-grpc", app.LogViaGRPC)`
 func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 	var requestPayload RequestPayload
 
@@ -296,7 +298,7 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	_, err = c.WriteLog(ctx, &logs.LogRequest{
-		LogEntry: &logs.Log {
+		LogEntry: &logs.Log{
 			Name: requestPayload.Log.Name,
 			Data: requestPayload.Log.Data,
 		},
