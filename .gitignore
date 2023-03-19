@@ -1,2 +1,12 @@
 .DS_Store
 
+## Local db volume mappings for docker
+db-data
+
+## Microservice Binaries
+front-end/frontApp
+broker-service/brokerApp
+authentication-service/authApp
+logger-service/loggerServiceApp
+mail-service/mailerApp
+listener-service/listenerApp
